@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pleach Shop | Flipkart-Style E-commerce Marketplace</title>
+  <!-- Meta tags for SEO -->
+  <meta name="description" content="Welcome to Pleach Shop - your ultimate destination for fashion, electronics, mobiles, home appliances, beauty products and groceries. Shop now for the best deals!">
+  <meta name="keywords" content="Pleach Shop, E-commerce, Flipkart clone, Shopping, Mobiles, Fashion, Electronics, Deals of the day">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pleach Shop | Flipkart-Style E-commerce Marketplace">
+  <meta property="og:description" content="Shop the best deals online on Pleach Shop. Premium e-commerce marketplace for Mobiles, Fashion, Electronics, Beauty, and more.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="index.html">
+  
+  <!-- CSS CDNs -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ==========================================
+       1. HEADER SECTION
+       ========================================== -->
+  <header class="pleach-header">
+    <div class="container d-flex align-items-center justify-content-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="logo-container">
+        <span class="logo-title">Pleach Shop</span>
+      </a>
+
+      <!-- Search Container -->
+      <div class="search-container mx-4 flex-grow-1 max-width-600">
+        <div class="search-input-group">
+          <input type="text" class="search-input" placeholder="Search for products, brands and more..." autocomplete="off">
+          <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <!-- Search suggestions dropdown -->
+        <div class="search-suggestions"></div>
+      </div>
+
+      <!-- Actions Area -->
+      <div class="d-flex align-items-center gap-4">
+        <!-- Auth Container (Replaced dynamically in app.js) -->
+        <div id="header-auth-container">
+          <a href="login.html" class="btn-login-header">Login</a>
+        </div>
+
+        <a href="wishlist.html" class="header-action-link">
+          <i class="fas fa-heart me-1"></i>
+          <span>Wishlist</span>
+          <span class="badge-count wishlist-badge">0</span>
+        </a>
+
+        <a href="cart.html" class="header-action-link">
+          <i class="fas fa-shopping-cart me-1"></i>
+          <span>Cart</span>
+          <span class="badge-count cart-badge">0</span>
+        </a>
+
+
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==========================================
+       2. CATEGORIES NAVIGATION
+       ========================================== -->
+  <nav class="category-nav-bar">
+    <div class="container">
+      <div class="category-menu-list">
+        
+        <a href="products.html?category=T-Shirts" class="category-item">
+          <img src="assets/image 16.png" alt="T-Shirts" class="category-img">
+          <span class="category-name">T-Shirts</span>
+        </a>
+
+        <a href="products.html?category=Caps" class="category-item">
+          <img src="assets/young-model-wearing-basecall-cap-mockup-in-street-during-the-day-0027 1.png" alt="Caps" class="category-img">
+          <span class="category-name">Caps</span>
+        </a>
+
+        <a href="products.html?category=Tote Bags" class="category-item">
+          <img src="assets/image 21.png" alt="Tote Bags" class="category-img">
+          <span class="category-name">Tote Bags</span>
+        </a>
+
+        <a href="products.html?category=Phone Cases" class="category-item">
+          <img src="assets/bc7a184d6833121b171949a4a57d5ab9 (1) 1.png" alt="Phone Cases" class="category-img">
+          <span class="category-name">Phone Cases</span>
+        </a>
+
+        <a href="products.html?category=Mugs" class="category-item">
+          <img src="assets/image 20.png" alt="Mugs" class="category-img">
+          <span class="category-name">Mugs</span>
+        </a>
+
+        <a href="products.html?category=Laptop Skins" class="category-item">
+          <img src="assets/laptop-cover-mockup (1) 1.png" alt="Laptop Skins" class="category-img">
+          <span class="category-name">Laptop Skins</span>
+        </a>
+
+        <a href="products.html?category=Toys %26 Puzzles" class="category-item">
+          <img src="assets/puzzle img.png" alt="Toys & Puzzles" class="category-img">
+          <span class="category-name">Toys & Puzzles</span>
+        </a>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="container">
+
+    <!-- ==========================================
+         3. HERO BANNER SLIDER
+         ========================================== -->
+    <section class="hero-slider-container">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <a href="products.html">
+              <img src="assets/Banner_1.jpg.jpeg" alt="Pleach Shop Special Offers Banner" class="d-block w-100">
+            </a>
+          </div>
+          <div class="carousel-item" style="background-color: #c8562d;">
+            <div class="d-flex align-items-center justify-content-between px-5 h-100 py-4 text-white">
+              <div>
+                <span class="badge bg-light text-danger mb-2 font-weight-bold">SACRED GEOMETRY</span>
+                <h1 class="display-5 fw-bold">Sanchi Stupa & Mandala Tees</h1>
+                <p class="lead">Fine line drawing screenprints in metallic inks on long-staple cotton.</p>
+                <a href="products.html?category=T-Shirts" class="btn btn-light text-dark px-4 py-2 fw-bold shadow-sm">Explore Collection</a>
+              </div>
+              <img src="assets/image 17.png" alt="T-Shirts Collection" style="max-height: 240px; object-fit: contain;" class="d-none d-md-block">
+            </div>
+          </div>
+          <div class="carousel-item" style="background-color: black;">
+            <div class="d-flex align-items-center justify-content-between px-5 h-100 py-4 text-white">
+              <div>
+                <span class="badge bg-success mb-2 font-weight-bold">ARTISTIC TECH</span>
+                <h1 class="display-5 fw-bold">Jaali & Mandala Laptop Skins</h1>
+                <p class="lead">Durable 3M bubble-free vinyl covers and blueprint desk mats.</p>
+                <a href="products.html?category=Laptop Skins" class="btn btn-success px-4 py-2 fw-bold shadow-sm">Shop Skins</a>
+              </div>
+              <img src="assets/laptop-cover-mockup (1) 1.png" alt="Laptop Skins" style="max-height: 240px; object-fit: contain;" class="d-none d-md-block">
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         4. DEALS OF THE DAY
+         ========================================== -->
+    <section class="section-card-container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Deals of the Day</h2>
+          <div class="section-subtitle"><i class="far fa-clock me-1 text-danger"></i> Ending soon! Exclusive limited-time discounts.</div>
+        </div>
+        <a href="products.html?filter=deals" class="btn-view-all">View All</a>
+      </div>
+      <div class="scroll-section-wrapper">
+        <button class="scroll-arrow scroll-arrow-left"><i class="fas fa-chevron-left"></i></button>
+        <div class="horizontal-scroll-row" id="deals-row">
+          <!-- Rendered dynamically -->
+        </div>
+        <button class="scroll-arrow scroll-arrow-right"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         5. TOP OFFERS BANNER GRID
+         ========================================== -->
+    <section class="row mb-4">
+      <div class="col-md-4">
+        <a href="products.html?category=Laptop Skins" class="offer-grid-item d-block">
+          <div class="p-4 text-white d-flex align-items-center justify-content-between" style="background: linear-gradient(135deg, #ea52f5, #ab1bb8); border-radius: 4px;">
+            <div>
+              <h5 class="fw-bold">Premium Tech Skins</h5>
+              <p class="mb-0" style="font-size: 13px;">Min. 40% Off on Laptop Skins</p>
+            </div>
+            <i class="fas fa-laptop fs-1 opacity-50"></i>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="products.html?category=Mugs" class="offer-grid-item d-block">
+          <div class="p-4 text-white d-flex align-items-center justify-content-between" style="background: linear-gradient(135deg, #11998e, #38ef7d); border-radius: 4px;">
+            <div>
+              <h5 class="fw-bold">Artistic Mugs</h5>
+              <p class="mb-0" style="font-size: 13px;">Flat 30% Off + Free Delivery</p>
+            </div>
+            <i class="fas fa-mug-hot fs-1 opacity-50"></i>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="products.html?category=Caps" class="offer-grid-item d-block">
+          <div class="p-4 text-white d-flex align-items-center justify-content-between" style="background: linear-gradient(135deg, #FF512F, #DD2476); border-radius: 4px;">
+            <div>
+              <h5 class="fw-bold">Embroidered Caps</h5>
+              <p class="mb-0" style="font-size: 13px;">Up to 50% Off on Heritage Caps</p>
+            </div>
+            <i class="fas fa-hat-cowboy fs-1 opacity-50"></i>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         6. BEST SELLING PRODUCTS
+         ========================================== -->
+    <section class="section-card-container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Best Selling Products</h2>
+          <div class="section-subtitle">The most popular items loved by our customers.</div>
+        </div>
+        <a href="products.html?filter=bestsellers" class="btn-view-all">View All</a>
+      </div>
+      <div class="scroll-section-wrapper">
+        <button class="scroll-arrow scroll-arrow-left"><i class="fas fa-chevron-left"></i></button>
+        <div class="horizontal-scroll-row" id="bestsellers-row">
+          <!-- Rendered dynamically -->
+        </div>
+        <button class="scroll-arrow scroll-arrow-right"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         7. TECH ACCESSORIES SECTION
+         ========================================== -->
+    <section class="section-card-container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Premium Tech Accessories</h2>
+          <div class="section-subtitle">Mughal Jaali laptop skins, blueprint desk mats, and phone cases.</div>
+        </div>
+        <a href="products.html?category=Laptop Skins" class="btn-view-all">View All</a>
+      </div>
+      <div class="scroll-section-wrapper">
+        <button class="scroll-arrow scroll-arrow-left"><i class="fas fa-chevron-left"></i></button>
+        <div class="horizontal-scroll-row" id="electronics-row">
+          <!-- Rendered dynamically -->
+        </div>
+        <button class="scroll-arrow scroll-arrow-right"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         8. APPAREL & CAPS SECTION
+         ========================================== -->
+    <section class="section-card-container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Heritage Apparel & Caps</h2>
+          <div class="section-subtitle">Artistic Sanchi Stupa screenprinted tees and embroidered caps.</div>
+        </div>
+        <a href="products.html?category=T-Shirts" class="btn-view-all">View All</a>
+      </div>
+      <div class="scroll-section-wrapper">
+        <button class="scroll-arrow scroll-arrow-left"><i class="fas fa-chevron-left"></i></button>
+        <div class="horizontal-scroll-row" id="fashion-row">
+          <!-- Rendered dynamically -->
+        </div>
+        <button class="scroll-arrow scroll-arrow-right"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         9. MUGS & TOTE BAGS SECTION
+         ========================================== -->
+    <section class="section-card-container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Artistic Mugs & Tote Bags</h2>
+          <div class="section-subtitle">Ancient columns ceramic mugs and unbleached cotton canvas tote bags.</div>
+        </div>
+        <a href="products.html?category=Mugs" class="btn-view-all">View All</a>
+      </div>
+      <div class="scroll-section-wrapper">
+        <button class="scroll-arrow scroll-arrow-left"><i class="fas fa-chevron-left"></i></button>
+        <div class="horizontal-scroll-row" id="appliances-row">
+          <!-- Rendered dynamically -->
+        </div>
+        <button class="scroll-arrow scroll-arrow-right"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         11. RECENTLY VIEWED PRODUCTS
+         ========================================== -->
+    <section class="section-card-container" id="recently-viewed-section" style="display: none;">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Recently Viewed</h2>
+          <div class="section-subtitle">Pick up where you left off.</div>
+        </div>
+      </div>
+      <div class="scroll-section-wrapper">
+        <button class="scroll-arrow scroll-arrow-left"><i class="fas fa-chevron-left"></i></button>
+        <div class="horizontal-scroll-row" id="recently-viewed-row">
+          <!-- Rendered dynamically -->
+        </div>
+        <button class="scroll-arrow scroll-arrow-right"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         12. FEATURED BRANDS
+         ========================================== -->
+    <section class="section-card-container p-4 text-center">
+      <h3 class="mb-4 fw-bold">Featured Brands</h3>
+      <div class="row align-items-center justify-content-center g-4">
+        <div class="col-6 col-md-2"><span class="fs-4 fw-bold text-muted" style="letter-spacing: 2px;">PLEACH TECH</span></div>
+        <div class="col-6 col-md-2"><span class="fs-4 fw-bold text-muted" style="letter-spacing: 2px;">NEXUS</span></div>
+        <div class="col-6 col-md-2"><span class="fs-4 fw-bold text-muted" style="letter-spacing: 2px;">SHIELD</span></div>
+        <div class="col-6 col-md-2"><span class="fs-4 fw-bold text-muted" style="letter-spacing: 2px;">AUDIO LAB</span></div>
+        <div class="col-6 col-md-2"><span class="fs-4 fw-bold text-muted" style="letter-spacing: 2px;">FARMS IND</span></div>
+        <div class="col-6 col-md-2"><span class="fs-4 fw-bold text-muted" style="letter-spacing: 2px;">LIVING</span></div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         13. CUSTOMER REVIEWS
+         ========================================== -->
+    <section class="row mb-4">
+      <div class="col-12 text-center mb-3">
+        <h3 class="fw-bold">What Our Customers Say</h3>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 p-4 border-0 shadow-sm">
+          <div class="d-flex align-items-center mb-3">
+            <span class="rating-badge me-2">5.0 <i class="fas fa-star"></i></span>
+            <strong class="font-secondary">Outstanding Quality!</strong>
+          </div>
+          <p class="text-muted" style="font-size: 13.5px;">"Bought the Pleach Sports Classic Cap and it fits perfectly. The material is thick, breathable cotton and holds up perfectly after washes. Super fast shipping too!"</p>
+          <small class="text-secondary fw-semibold mt-auto">- Aniket K., Mumbai</small>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 p-4 border-0 shadow-sm">
+          <div class="d-flex align-items-center mb-3">
+            <span class="rating-badge me-2">4.8 <i class="fas fa-star"></i></span>
+            <strong class="font-secondary">Value for Money</strong>
+          </div>
+          <p class="text-muted" style="font-size: 13.5px;">"Absolutely love the Sanchi Stupa Archway Tee! The fabric feels premium, heavy, and extremely comfortable. The screenprint details are very fine and didn't fade after washing. Worth every rupee."</p>
+          <small class="text-secondary fw-semibold mt-auto">- Priya S., Bangalore</small>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 p-4 border-0 shadow-sm">
+          <div class="d-flex align-items-center mb-3">
+            <span class="rating-badge me-2">5.0 <i class="fas fa-star"></i></span>
+            <strong class="font-secondary">Stunning Laptop Skin</strong>
+          </div>
+          <p class="text-muted" style="font-size: 13.5px;">"The Mughal Jaali laptop skin looks stunning on my MacBook! Air-release channel technology worked perfectly—bubble-free application on the first try. And no sticky residue when adjusting. Outstanding!"</p>
+          <small class="text-secondary fw-semibold mt-auto">- Sneha R., New Delhi</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         14. NEWSLETTER SUBSCRIPTION
+         ========================================== -->
+    <section class="newsletter-card my-5">
+      <h3 class="fw-bold mb-2">Subscribe to our newsletter</h3>
+      <p class="text-muted mb-0">Get exclusive coupon codes, stock notifications, and deals delivered to your inbox.</p>
+      <form class="newsletter-form">
+        <div class="newsletter-input-group shadow-sm">
+          <input type="email" class="form-control" placeholder="Enter your email address" required style="border-radius: 2px 0 0 2px;">
+          <button class="btn btn-warning px-4 fw-bold" type="submit" style="background-color: var(--flipkart-orange); border-color: var(--flipkart-orange); color: white; border-radius: 0 2px 2px 0;">Subscribe</button>
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       15. FOOTER SECTION
+       ========================================== -->
+  <footer class="pleach-footer">
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <div class="col-md-3">
+          <h5 class="footer-title">ABOUT</h5>
+          <ul class="footer-link-list">
+            <li><a href="about.html">Contact Us</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="about.html">Careers</a></li>
+            <li><a href="about.html">Pleach Stories</a></li>
+            <li><a href="about.html">Corporate Information</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5 class="footer-title">HELP</h5>
+          <ul class="footer-link-list">
+            <li><a href="contact.html">Payments</a></li>
+            <li><a href="contact.html">Shipping</a></li>
+            <li><a href="contact.html">Cancellation & Returns</a></li>
+            <li><a href="contact.html">FAQ</a></li>
+            <li><a href="contact.html">Report Infringement</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5 class="footer-title">CONSUMER POLICY</h5>
+          <ul class="footer-link-list">
+            <li><a href="#">Cancellation & Returns</a></li>
+            <li><a href="#">Terms Of Use</a></li>
+            <li><a href="#">Security</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Sitemap</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5 class="footer-title">CONTACT INFORMATION</h5>
+          <p class="text-white mb-1">Pleach Shop Corporate Office,</p>
+          <p class="text-white mb-1">102, E-Commerce Park, Bandra Kurla Complex,</p>
+          <p class="text-white mb-3">Mumbai - 400051, Maharashtra, India.</p>
+          <p class="text-white mb-1"><i class="fas fa-envelope me-2"></i>support@pleachshop.com</p>
+          <p class="text-white"><i class="fas fa-phone me-2"></i>1800-208-9898 (Toll Free)</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar text-secondary pt-3">
+        <p class="mb-0">&copy; 2026 Pleach Shop. All Rights Reserved.</p>
+        <div class="d-flex gap-4">
+          <a href="#" class="text-secondary"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-secondary"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-secondary"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="text-secondary"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p class="mb-0">Designed by Antigravity</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/products-data.js"></script>
+  <script src="js/app.js"></script>
+  
+  <!-- Homepage Render Logic -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderHomepageSections();
+      renderRecentlyViewed();
+      
+      // Re-render recently viewed if details accessed
+      window.addEventListener("focus", () => {
+        renderRecentlyViewed();
+      });
+    });
+
+    function renderHomepageSections() {
+      if (typeof PRODUCTS_DATA === "undefined") return;
+
+      const dealsRow = document.getElementById("deals-row");
+      const bestsellersRow = document.getElementById("bestsellers-row");
+      const electronicsRow = document.getElementById("electronics-row");
+      const fashionRow = document.getElementById("fashion-row");
+      const appliancesRow = document.getElementById("appliances-row");
+
+      // 1. Deals of the Day (isDeal === true)
+      const deals = PRODUCTS_DATA.filter(p => p.isDeal);
+      dealsRow.innerHTML = deals.map(p => createProductCardMarkup(p)).join("");
+
+      // 2. Best Sellers (isBestSeller === true)
+      const bestsellers = PRODUCTS_DATA.filter(p => p.isBestSeller);
+      bestsellersRow.innerHTML = bestsellers.map(p => createProductCardMarkup(p)).join("");
+
+      // 3. Tech Accessories (Laptop Skins + Phone Cases)
+      const techAccessories = PRODUCTS_DATA.filter(p => p.category === "Laptop Skins" || p.category === "Phone Cases");
+      electronicsRow.innerHTML = techAccessories.map(p => createProductCardMarkup(p)).join("");
+
+      // 4. Heritage Apparel & Caps (T-Shirts + Caps)
+      const apparelCaps = PRODUCTS_DATA.filter(p => p.category === "T-Shirts" || p.category === "Caps");
+      fashionRow.innerHTML = apparelCaps.map(p => createProductCardMarkup(p)).join("");
+
+      // 5. Mugs & Tote Bags (Mugs + Tote Bags)
+      const mugsTotes = PRODUCTS_DATA.filter(p => p.category === "Mugs" || p.category === "Tote Bags");
+      appliancesRow.innerHTML = mugsTotes.map(p => createProductCardMarkup(p)).join("");
+
+      // Bind wishlist and image events
+      bindProductCardEvents();
+
+      // Trigger scroll arrow recalculation
+      if (window.updateAllScrollArrows) window.updateAllScrollArrows();
+    }
+
+    function renderRecentlyViewed() {
+      const recentlyViewedSection = document.getElementById("recently-viewed-section");
+      const recentlyViewedRow = document.getElementById("recently-viewed-row");
+      
+      if (!recentlyViewedSection || !recentlyViewedRow) return;
+
+      const viewedIds = JSON.parse(localStorage.getItem("pleach_recently_viewed")) || [];
+      
+      if (viewedIds.length === 0) {
+        recentlyViewedSection.style.display = "none";
+        return;
+      }
+
+      // Load products based on IDs list
+      const viewedProducts = viewedIds
+        .map(id => PRODUCTS_DATA.find(p => p.id === id))
+        .filter(p => p !== undefined)
+        .slice(0, 8); // Display maximum of 8
+
+      if (viewedProducts.length > 0) {
+        recentlyViewedRow.innerHTML = viewedProducts.map(p => createProductCardMarkup(p)).join("");
+        recentlyViewedSection.style.display = "block";
+        bindProductCardEvents();
+      } else {
+        recentlyViewedSection.style.display = "none";
+      }
+    }
+
+    // Helper for rendering product cards
+    function createProductCardMarkup(product) {
+      const isWish = isInWishlist(product.id) ? "active" : "";
+      return `
+        <div class="product-card">
+          <button class="wishlist-toggle ${isWish}" data-id="${product.id}">
+            <i class="fas fa-heart"></i>
+          </button>
+          <a href="product-details.html?id=${product.id}" class="product-image-wrapper">
+            <img src="${product.image}" alt="${product.name}" class="product-img" loading="lazy">
+          </a>
+          <div class="product-details">
+            <a href="product-details.html?id=${product.id}" class="product-name-title" title="${product.name}">
+              ${product.name}
+            </a>
+            <div class="d-flex align-items-center mt-1">
+              <span class="rating-badge">${product.rating} <i class="fas fa-star"></i></span>
+              <span class="reviews-count-text">(${product.reviewsCount.toLocaleString()})</span>
+            </div>
+            <div class="price-container">
+              <span class="current-price">₹${product.price.toLocaleString()}</span>
+              <span class="original-price">₹${product.originalPrice.toLocaleString()}</span>
+              <span class="discount-tag">${product.discount}% off</span>
+            </div>
+            <div class="delivery-tag">Free Delivery</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function bindProductCardEvents() {
+      document.querySelectorAll(".wishlist-toggle").forEach(btn => {
+        btn.onclick = function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const id = this.dataset.id;
+          const active = toggleWishlist(id);
+          this.classList.toggle("active", active);
+        };
+      });
+    }
+  </script>
+</body>
+</html>

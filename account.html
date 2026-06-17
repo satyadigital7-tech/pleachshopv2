@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account | Pleach Shop</title>
+  
+  <!-- CSS CDNs -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER SECTION
+       ========================================== -->
+  <header class="pleach-header">
+    <div class="container d-flex align-items-center justify-content-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="logo-container">
+        <span class="logo-title">Pleach Shop</span>
+      </a>
+
+      <!-- Search Container -->
+      <div class="search-container mx-4 flex-grow-1 max-width-600">
+        <div class="search-input-group">
+          <input type="text" class="search-input" placeholder="Search for products, brands and more..." autocomplete="off">
+          <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="search-suggestions"></div>
+      </div>
+
+      <!-- Actions Area -->
+      <div class="d-flex align-items-center gap-4">
+        <div id="header-auth-container">
+          <a href="login.html" class="btn-login-header">Login</a>
+        </div>
+
+        <a href="wishlist.html" class="header-action-link">
+          <i class="fas fa-heart me-1"></i>
+          <span>Wishlist</span>
+          <span class="badge-count wishlist-badge">0</span>
+        </a>
+
+        <a href="cart.html" class="header-action-link">
+          <i class="fas fa-shopping-cart me-1"></i>
+          <span>Cart</span>
+          <span class="badge-count cart-badge">0</span>
+        </a>
+
+
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container my-4">
+    <div class="row g-4">
+      
+      <!-- ==========================================
+           LEFT COLUMN: SIDEBAR MENU
+           ========================================== -->
+      <aside class="col-lg-3">
+        <div class="account-menu-card">
+          <div class="account-profile-header">
+            <div class="account-avatar" id="acc-avatar">U</div>
+            <div>
+              <small class="text-muted">Hello,</small>
+              <h6 class="mb-0 fw-bold" id="acc-username">Loading User...</h6>
+            </div>
+          </div>
+          <div class="account-menu-list">
+            <button class="account-menu-item active w-100 text-start border-0 bg-transparent" data-tab="profile">
+              <i class="fas fa-user"></i>
+              <span>Profile Information</span>
+            </button>
+            <button class="account-menu-item w-100 text-start border-0 bg-transparent" data-tab="addresses">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Manage Addresses</span>
+            </button>
+            <button class="account-menu-item w-100 text-start border-0 bg-transparent" data-tab="orders">
+              <i class="fas fa-shopping-bag"></i>
+              <span>My Orders</span>
+            </button>
+            <button class="account-menu-item w-100 text-start border-0 bg-transparent" id="acc-logout-btn">
+              <i class="fas fa-sign-out-alt"></i>
+              <span>Logout</span>
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ==========================================
+           RIGHT COLUMN: DYNAMIC PANEL CONTENTS
+           ========================================== -->
+      <section class="col-lg-9">
+        
+        <!-- Profile Panel -->
+        <div class="card border-0 shadow-sm p-4 acc-panel-pane" id="pane-profile">
+          <h5 class="fw-bold mb-4">Personal Information</h5>
+          <form id="profile-edit-form">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label" style="font-size: 13px;">Full Name</label>
+                <input type="text" class="form-control" id="profile-name" required disabled>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" style="font-size: 13px;">Gender</label>
+                <div class="pt-2">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="gender-male" value="male" disabled>
+                    <label class="form-check-label" for="gender-male">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="gender-female" value="female" disabled>
+                    <label class="form-check-label" for="gender-female">Female</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" style="font-size: 13px;">Email Address</label>
+                <input type="email" class="form-control" id="profile-email" required disabled>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" style="font-size: 13px;">Mobile Number</label>
+                <input type="tel" class="form-control" id="profile-phone" required disabled>
+              </div>
+            </div>
+            
+            <div class="mt-4">
+              <button type="button" class="btn btn-primary px-4 fw-semibold" id="profile-edit-btn" style="background-color: var(--primary-blue); border: none;">Edit Profile</button>
+              <button type="submit" class="btn btn-success px-4 fw-semibold d-none" id="profile-save-btn">Save Changes</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Addresses Panel -->
+        <div class="card border-0 shadow-sm p-4 acc-panel-pane d-none" id="pane-addresses">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h5 class="fw-bold mb-0">Manage Addresses</h5>
+            <button class="btn btn-outline-primary btn-sm fw-semibold" id="show-address-form-btn">
+              <i class="fas fa-plus me-1"></i> ADD NEW ADDRESS
+            </button>
+          </div>
+
+          <!-- New Address Form (Hidden by default) -->
+          <div class="card p-3 border border-primary mb-4 d-none" id="new-address-form-container">
+            <h6 class="fw-bold mb-3" id="address-form-title">Add New Address</h6>
+            <form id="address-form">
+              <input type="hidden" id="address-edit-index">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <input type="text" class="form-control form-control-sm" id="addr-name" placeholder="Name" required>
+                </div>
+                <div class="col-md-6">
+                  <input type="tel" class="form-control form-control-sm" id="addr-phone" placeholder="10-digit Mobile Number" required pattern="^\d{10}$">
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control form-control-sm" id="addr-pincode" placeholder="Pincode" required pattern="^\d{6}$">
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control form-control-sm" id="addr-locality" placeholder="Locality" required>
+                </div>
+                <div class="col-12">
+                  <textarea class="form-control form-control-sm" id="addr-street" rows="2" placeholder="Address (Area and Street)" required></textarea>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control form-control-sm" id="addr-city" placeholder="City/District/Town" required>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control form-control-sm" id="addr-state" placeholder="State" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label d-block" style="font-size: 12px; font-weight: 600;">Address Type</label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="addrType" id="addr-home" value="Home" checked>
+                    <label class="form-check-label" for="addr-home">Home (All day delivery)</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="addrType" id="addr-work" value="Work">
+                    <label class="form-check-label" for="addr-work">Work (Delivery between 10 AM - 5 PM)</label>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-3 d-flex gap-2">
+                <button type="submit" class="btn btn-sm btn-primary" style="background-color: var(--primary-blue); border: none;">Save Address</button>
+                <button type="button" class="btn btn-sm btn-secondary" id="cancel-address-btn">Cancel</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Addresses List -->
+          <div id="addresses-list-container">
+            <!-- Dynamic listing -->
+          </div>
+        </div>
+
+        <!-- Orders Panel -->
+        <div class="card border-0 shadow-sm p-4 acc-panel-pane d-none" id="pane-orders">
+          <h5 class="fw-bold mb-4">My Orders</h5>
+          <div id="orders-list-container">
+            <!-- Dynamic orders list -->
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="pleach-footer">
+    <div class="container text-center text-secondary">
+      <p class="mb-0">&copy; 2026 Pleach Shop. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/products-data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/account.js"></script>
+</body>
+</html>

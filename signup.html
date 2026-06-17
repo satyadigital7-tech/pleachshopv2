@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup | Pleach Shop</title>
+  
+  <!-- CSS CDNs -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Minimal Header -->
+  <header class="pleach-header shadow-none">
+    <div class="container text-center">
+      <a href="index.html" class="logo-container align-items-center">
+        <span class="logo-title">Pleach Shop</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="auth-wrapper">
+      <div class="auth-card">
+        
+        <!-- Blue Sidebar -->
+        <div class="auth-sidebar">
+          <div>
+            <h2 class="auth-sidebar-title">Looks like you're new here!</h2>
+            <p class="auth-sidebar-desc">Sign up with your mobile number and email to get started</p>
+          </div>
+          <img src="assets/bc7a184d6833121b171949a4a57d5ab9 (1) 1.png" alt="Phone Cover" style="max-height: 140px; object-fit: contain; margin-top: auto; opacity: 0.9;">
+        </div>
+
+        <!-- Form Container -->
+        <div class="auth-form-container">
+          <form id="signup-form">
+            <div id="signup-error-alert" class="alert alert-danger d-none py-2" style="font-size: 13px;"></div>
+
+            <div class="auth-form-group">
+              <input type="text" class="auth-form-input" id="signup-name" placeholder=" " required>
+              <label class="auth-form-label" for="signup-name">Enter Full Name</label>
+            </div>
+
+            <div class="auth-form-group">
+              <input type="tel" class="auth-form-input" id="signup-phone" placeholder=" " pattern="^\d{10}$" title="Enter a valid 10-digit mobile number" required>
+              <label class="auth-form-label" for="signup-phone">Enter Mobile Number (10 digits)</label>
+            </div>
+
+            <div class="auth-form-group">
+              <input type="email" class="auth-form-input" id="signup-email" placeholder=" " required>
+              <label class="auth-form-label" for="signup-email">Enter Email ID</label>
+            </div>
+
+            <div class="auth-form-group">
+              <input type="password" class="auth-form-input" id="signup-password" placeholder=" " minlength="6" required>
+              <label class="auth-form-label" for="signup-password">Create Password (min 6 characters)</label>
+            </div>
+
+            <p class="auth-terms-text">
+              By continuing, you agree to Pleach Shop's <a href="#" class="text-primary">Terms of Use</a> and <a href="#" class="text-primary">Privacy Policy</a>.
+            </p>
+
+            <button type="submit" class="btn-auth-submit">CONTINUE</button>
+          </form>
+
+          <div class="auth-switch-link">
+            <a href="login.html" id="goto-login">Existing User? Log in</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-secondary py-3" style="font-size: 12px; background-color: var(--white); border-top: 1px solid var(--border-color);">
+    <p class="mb-0">&copy; 2026 Pleach Shop. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Check redirect URL
+      const params = new URLSearchParams(window.location.search);
+      const returnUrl = params.get("returnUrl") || "index.html";
+
+      const loginLink = document.getElementById("goto-login");
+      if (loginLink) {
+        loginLink.href = `login.html?returnUrl=${encodeURIComponent(returnUrl)}`;
+      }
+
+      // Form submit
+      const form = document.getElementById("signup-form");
+      const errBox = document.getElementById("signup-error-alert");
+
+      form.onsubmit = function(e) {
+        e.preventDefault();
+        errBox.classList.add("d-none");
+
+        const name = document.getElementById("signup-name").value.trim();
+        const phone = document.getElementById("signup-phone").value.trim();
+        const email = document.getElementById("signup-email").value.trim().toLowerCase();
+        const password = document.getElementById("signup-password").value;
+
+        // Fetch users
+        let users = JSON.parse(localStorage.getItem("pleach_registered_users")) || [];
+        
+        // Check if user already exists
+        const exists = users.some(u => u.email === email || u.phone === phone);
+
+        if (exists) {
+          errBox.textContent = "A user with this Email or Mobile Number already exists.";
+          errBox.classList.remove("d-none");
+          return;
+        }
+
+        const newUser = { name, phone, email, password };
+        users.push(newUser);
+        localStorage.setItem("pleach_registered_users", JSON.stringify(users));
+
+        // Auto-login new user
+        localStorage.setItem("pleach_user", JSON.stringify({
+          name: name,
+          email: email,
+          phone: phone
+        }));
+
+        showToast("Account created successfully! Logging you in...");
+        setTimeout(() => {
+          window.location.href = returnUrl;
+        }, 1200);
+      };
+    });
+
+    function showToast(message) {
+      const toast = document.createElement("div");
+      toast.innerHTML = `<div style="display:flex; align-items:center;"><i class="fas fa-check-circle text-success me-2"></i><span>${message}</span></div>`;
+      Object.assign(toast.style, {
+        position: "fixed", bottom: "20px", left: "50%", transform: "translateX(-50%)",
+        backgroundColor: "#212121", color: "#fff", padding: "12px 24px", borderRadius: "4px",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.2)", zIndex: "9999", fontSize: "14px", fontWeight: "500"
+      });
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 2500);
+    }
+  </script>
+</body>
+</html>

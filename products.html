@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Products | Pleach Shop</title>
+  <!-- SEO Tags -->
+  <meta name="description" content="Browse all products on Pleach Shop. Clean filters, instant sorting, and massive discounts on Mobiles, Laptops, Fashion, and Electronics.">
+  <meta name="keywords" content="Mobiles, Electronics, Laptops, Fashion, Beauty, Grocery, Search Products, Filter Products">
+  
+  <!-- CSS CDNs -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER SECTION
+       ========================================== -->
+  <header class="pleach-header">
+    <div class="container d-flex align-items-center justify-content-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="logo-container">
+        <span class="logo-title">Pleach Shop</span>
+      </a>
+
+      <!-- Search Container -->
+      <div class="search-container mx-4 flex-grow-1 max-width-600">
+        <div class="search-input-group">
+          <input type="text" class="search-input" placeholder="Search for products, brands and more..." autocomplete="off">
+          <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <!-- Search suggestions dropdown -->
+        <div class="search-suggestions"></div>
+      </div>
+
+      <!-- Actions Area -->
+      <div class="d-flex align-items-center gap-4">
+        <div id="header-auth-container">
+          <a href="login.html" class="btn-login-header">Login</a>
+        </div>
+
+        <a href="wishlist.html" class="header-action-link">
+          <i class="fas fa-heart me-1"></i>
+          <span>Wishlist</span>
+          <span class="badge-count wishlist-badge">0</span>
+        </a>
+
+        <a href="cart.html" class="header-action-link">
+          <i class="fas fa-shopping-cart me-1"></i>
+          <span>Cart</span>
+          <span class="badge-count cart-badge">0</span>
+        </a>
+
+
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container my-4">
+    <!-- Breadcrumbs -->
+    <nav aria-label="breadcrumb" class="mb-3">
+      <ol class="breadcrumb" style="font-size: 13px;">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page" id="breadcrumb-active">All Products</li>
+      </ol>
+    </nav>
+
+    <div class="row g-4">
+      
+      <!-- ==========================================
+           LEFT SIDEBAR FILTERS
+           ========================================== -->
+      <aside class="col-lg-3 d-none d-lg-block">
+        <div class="filter-card">
+          <div class="filter-header">
+            <h5 class="filter-title">Filters</h5>
+            <button class="btn-clear-all" id="clear-filters-btn">CLEAR ALL</button>
+          </div>
+
+          <!-- Category Filter -->
+          <div class="filter-section">
+            <h6 class="filter-section-title">Categories</h6>
+            <div class="filter-checkbox-list" id="category-filter-list">
+              <!-- Rendered Dynamically -->
+            </div>
+          </div>
+
+          <!-- Price Range Filter -->
+          <div class="filter-section">
+            <h6 class="filter-section-title">Price Range</h6>
+            <div class="filter-checkbox-list">
+              <label class="filter-checkbox-item">
+                <input type="checkbox" name="priceRange" value="under-500"> Under ₹500
+              </label>
+              <label class="filter-checkbox-item">
+                <input type="checkbox" name="priceRange" value="500-1000"> ₹500 - ₹1,000
+              </label>
+              <label class="filter-checkbox-item">
+                <input type="checkbox" name="priceRange" value="1000-5000"> ₹1,000 - ₹5,000
+              </label>
+              <label class="filter-checkbox-item">
+                <input type="checkbox" name="priceRange" value="5000-15000"> ₹5,000 - ₹15,000
+              </label>
+              <label class="filter-checkbox-item">
+                <input type="checkbox" name="priceRange" value="above-15000"> Over ₹15,000
+              </label>
+            </div>
+            <!-- Custom min/max inputs -->
+            <div class="price-inputs">
+              <input type="number" class="price-input-box" id="min-price-input" placeholder="Min">
+              <span class="text-muted">to</span>
+              <input type="number" class="price-input-box" id="max-price-input" placeholder="Max">
+              <button class="btn btn-sm btn-primary py-1" id="apply-price-btn" style="background-color: var(--primary-blue); font-size: 11px; border: none;">Go</button>
+            </div>
+          </div>
+
+          <!-- Brand Filter -->
+          <div class="filter-section">
+            <h6 class="filter-section-title">Brands</h6>
+            <div class="filter-checkbox-list" id="brand-filter-list">
+              <!-- Rendered Dynamically -->
+            </div>
+          </div>
+
+          <!-- Ratings Filter -->
+          <div class="filter-section">
+            <h6 class="filter-section-title">Customer Ratings</h6>
+            <div class="filter-checkbox-list">
+              <label class="filter-checkbox-item">
+                <input type="checkbox" name="ratingFilter" value="4"> 4★ & above
+              </label>
+              <label class="filter-checkbox-item">
+                <input type="checkbox" name="ratingFilter" value="3"> 3★ & above
+              </label>
+            </div>
+          </div>
+
+          <!-- Availability Filter -->
+          <div class="filter-section">
+            <h6 class="filter-section-title">Availability</h6>
+            <div class="filter-checkbox-list">
+              <label class="filter-checkbox-item">
+                <input type="checkbox" id="exclude-out-of-stock" checked> Exclude Out of Stock
+              </label>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ==========================================
+           RIGHT COLUMN (PRODUCTS GRID & SORTING)
+           ========================================== -->
+      <section class="col-lg-9">
+        
+        <!-- Mobile Filter Button Trigger -->
+        <div class="d-lg-none d-flex gap-2 mb-3">
+          <button class="btn btn-outline-primary flex-grow-1" data-bs-toggle="modal" data-bs-target="#mobileFiltersModal">
+            <i class="fas fa-filter me-2"></i> Filters
+          </button>
+        </div>
+
+        <div class="bg-white p-3 rounded shadow-sm border border-light mb-3">
+          <!-- Sorting bar -->
+          <div class="d-flex align-items-center flex-wrap gap-3" style="font-size: 14px;">
+            <span class="fw-bold text-secondary">Sort By</span>
+            <div class="d-flex gap-3 sorting-options">
+              <a href="#" class="sort-option active" data-sort="relevance">Relevance</a>
+              <a href="#" class="sort-option" data-sort="popularity">Popularity</a>
+              <a href="#" class="sort-option" data-sort="newest">Newest</a>
+              <a href="#" class="sort-option" data-sort="price-asc">Price: Low to High</a>
+              <a href="#" class="sort-option" data-sort="price-desc">Price: High to Low</a>
+            </div>
+          </div>
+          
+          <!-- Active query summary -->
+          <h1 class="fs-5 fw-bold mt-3 mb-0" id="results-heading">Showing products...</h1>
+        </div>
+
+        <!-- Active Filter Chips -->
+        <div class="active-filters-container" id="active-filter-chips">
+          <!-- Chips render dynamically -->
+        </div>
+
+        <!-- Products Grid -->
+        <div class="row g-3" id="products-grid">
+          <!-- Rendered dynamically -->
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==========================================
+       MOBILE FILTERS MODAL
+       ========================================== -->
+  <div class="modal fade" id="mobileFiltersModal" tabindex="-1" aria-labelledby="mobileFiltersModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="mobileFiltersModalLabel">Filters</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <!-- Copy filter items here dynamically or bind directly -->
+          <div class="p-3">
+            <h6 class="filter-section-title">Price Range</h6>
+            <div class="filter-checkbox-list">
+              <label class="filter-checkbox-item"><input type="checkbox" name="mPriceRange" value="under-500"> Under ₹500</label>
+              <label class="filter-checkbox-item"><input type="checkbox" name="mPriceRange" value="500-1000"> ₹500 - ₹1,000</label>
+              <label class="filter-checkbox-item"><input type="checkbox" name="mPriceRange" value="1000-5000"> ₹1,000 - ₹5,000</label>
+              <label class="filter-checkbox-item"><input type="checkbox" name="mPriceRange" value="5000-15000"> ₹5,000 - ₹15,000</label>
+              <label class="filter-checkbox-item"><input type="checkbox" name="mPriceRange" value="above-15000"> Over ₹15,000</label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="mobile-apply-btn" style="background-color: var(--primary-blue);" data-bs-dismiss="modal">Apply Filters</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="pleach-footer">
+    <!-- Rest of Footer -->
+    <div class="container text-center text-secondary">
+      <p class="mb-0">&copy; 2026 Pleach Shop. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/products-data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

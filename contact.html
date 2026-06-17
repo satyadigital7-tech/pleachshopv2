@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Pleach Shop</title>
+  
+  <!-- CSS CDNs -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER SECTION
+       ========================================== -->
+  <header class="pleach-header">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo-container">
+        <span class="logo-title">Pleach Shop</span>
+      </a>
+      <div class="d-flex align-items-center gap-4">
+        <div id="header-auth-container">
+          <a href="login.html" class="btn-login-header">Login</a>
+        </div>
+        <a href="wishlist.html" class="header-action-link">
+          <i class="fas fa-heart me-1"></i><span>Wishlist</span><span class="badge-count wishlist-badge">0</span>
+        </a>
+        <a href="cart.html" class="header-action-link">
+          <i class="fas fa-shopping-cart me-1"></i><span>Cart</span><span class="badge-count cart-badge">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container my-5">
+    <div class="row g-4">
+      
+      <!-- ==========================================
+           LEFT COLUMN: CONTACT FORM
+           ========================================== -->
+      <div class="col-lg-6">
+        <div class="card p-4 border-0 shadow-sm">
+          <h3 class="fw-bold mb-3">Get in Touch</h3>
+          <p class="text-muted mb-4">Have questions about an order, delivery, or selling on Pleach Shop? Write to us.</p>
+          
+          <form id="contact-form">
+            <div class="mb-3">
+              <label for="contact-name" class="form-label fw-semibold" style="font-size: 13px;">Full Name</label>
+              <input type="text" class="form-control" id="contact-name" placeholder="John Doe" required>
+            </div>
+            
+            <div class="mb-3">
+              <label for="contact-email" class="form-label fw-semibold" style="font-size: 13px;">Email Address</label>
+              <input type="email" class="form-control" id="contact-email" placeholder="john@example.com" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="contact-phone" class="form-label fw-semibold" style="font-size: 13px;">Mobile Number</label>
+              <input type="tel" class="form-control" id="contact-phone" placeholder="10-digit number" pattern="^\d{10}$" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="contact-message" class="form-label fw-semibold" style="font-size: 13px;">Your Message</label>
+              <textarea class="form-control" id="contact-message" rows="4" placeholder="How can we help you today?" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary px-5 fw-bold" style="background-color: var(--primary-blue); border: none; border-radius: 2px;">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ==========================================
+           RIGHT COLUMN: CONTACT INFORMATION & GOOGLE MAPS
+           ========================================== -->
+      <div class="col-lg-6">
+        <div class="card p-4 border-0 shadow-sm h-100 d-flex flex-column justify-content-between">
+          <div>
+            <h3 class="fw-bold mb-4">Corporate Office</h3>
+            
+            <div class="d-flex mb-3">
+              <div class="text-primary fs-4 me-3"><i class="fas fa-map-marker-alt"></i></div>
+              <div>
+                <h6 class="fw-bold mb-1">Office Address</h6>
+                <p class="text-muted mb-0" style="font-size: 14px; line-height: 1.5;">
+                  Pleach Shop Corporate Office,<br>
+                  102, E-Commerce Park, Bandra Kurla Complex,<br>
+                  Mumbai - 400051, Maharashtra, India.
+                </p>
+              </div>
+            </div>
+
+            <div class="d-flex mb-3">
+              <div class="text-success fs-4 me-3"><i class="fas fa-envelope"></i></div>
+              <div>
+                <h6 class="fw-bold mb-1">Email Support</h6>
+                <p class="text-muted mb-0" style="font-size: 14px;">support@pleachshop.com</p>
+              </div>
+            </div>
+
+            <div class="d-flex mb-4">
+              <div class="text-warning fs-4 me-3"><i class="fas fa-phone"></i></div>
+              <div>
+                <h6 class="fw-bold mb-1">Phone Number</h6>
+                <p class="text-muted mb-0" style="font-size: 14px;">1800-208-9898 (Toll Free)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- OpenStreetMap integration -->
+          <div class="rounded overflow-hidden border border-light shadow-sm" style="height: 250px;">
+            <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=72.825%2C19.05%2C72.845%2C19.07&amp;layer=mapnik"></iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="pleach-footer">
+    <div class="container text-center text-secondary">
+      <p class="mb-0">&copy; 2026 Pleach Shop. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/products-data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>

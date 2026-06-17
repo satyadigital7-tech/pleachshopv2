@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Wishlist | Pleach Shop</title>
+  
+  <!-- CSS CDNs -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER SECTION
+       ========================================== -->
+  <header class="pleach-header">
+    <div class="container d-flex align-items-center justify-content-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="logo-container">
+        <span class="logo-title">Pleach Shop</span>
+      </a>
+
+      <!-- Search Container -->
+      <div class="search-container mx-4 flex-grow-1 max-width-600">
+        <div class="search-input-group">
+          <input type="text" class="search-input" placeholder="Search for products, brands and more..." autocomplete="off">
+          <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="search-suggestions"></div>
+      </div>
+
+      <!-- Actions Area -->
+      <div class="d-flex align-items-center gap-4">
+        <div id="header-auth-container">
+          <a href="login.html" class="btn-login-header">Login</a>
+        </div>
+
+        <a href="wishlist.html" class="header-action-link">
+          <i class="fas fa-heart me-1"></i>
+          <span>Wishlist</span>
+          <span class="badge-count wishlist-badge">0</span>
+        </a>
+
+        <a href="cart.html" class="header-action-link">
+          <i class="fas fa-shopping-cart me-1"></i>
+          <span>Cart</span>
+          <span class="badge-count cart-badge">0</span>
+        </a>
+
+
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container my-4">
+    
+    <!-- Empty Wishlist view -->
+    <div class="row d-none" id="empty-wishlist-view">
+      <div class="col-12">
+        <div class="card p-5 text-center border-0 shadow-sm">
+          <div class="py-4">
+            <i class="fas fa-heart text-muted mb-4" style="font-size: 80px;"></i>
+            <h2 class="fw-bold mb-2">Empty Wishlist!</h2>
+            <p class="text-muted mb-4">You have not saved any items to your wishlist yet. Explore products and tap the heart icon to save.</p>
+            <a href="products.html" class="btn btn-primary px-4 fw-semibold" style="background-color: var(--primary-blue); border: none;">Explore Products</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Wishlist Grid -->
+    <div class="row g-4" id="active-wishlist-view">
+      
+      <!-- Account Menu Sidebar -->
+      <aside class="col-lg-3">
+        <div class="account-menu-card">
+          <div class="account-profile-header">
+            <div class="account-avatar" id="wishlist-avatar">U</div>
+            <div>
+              <small class="text-muted">Hello,</small>
+              <h6 class="mb-0 fw-bold" id="wishlist-username">Guest User</h6>
+            </div>
+          </div>
+          <div class="account-menu-list">
+            <a href="account.html" class="account-menu-item">
+              <i class="fas fa-user"></i>
+              <span>Profile Info</span>
+            </a>
+            <a href="account.html?tab=orders" class="account-menu-item">
+              <i class="fas fa-shopping-bag"></i>
+              <span>My Orders</span>
+            </a>
+            <a href="wishlist.html" class="account-menu-item active">
+              <i class="fas fa-heart"></i>
+              <span>My Wishlist</span>
+            </a>
+            <a href="account.html?tab=addresses" class="account-menu-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Addresses</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Wishlist items card panel -->
+      <div class="col-lg-9">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-white p-3 border-bottom">
+            <h5 class="mb-0 fw-bold">My Wishlist (<span id="wishlist-count-header">0 Items</span>)</h5>
+          </div>
+
+          <div id="wishlist-items-container">
+            <!-- Dynamic rows -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="pleach-footer">
+    <div class="container text-center text-secondary">
+      <p class="mb-0">&copy; 2026 Pleach Shop. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/products-data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/wishlist.js"></script>
+</body>
+</html>

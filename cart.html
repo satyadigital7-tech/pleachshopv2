@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart | Pleach Shop</title>
+  
+  <!-- CSS CDNs -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER SECTION
+       ========================================== -->
+  <header class="pleach-header">
+    <div class="container d-flex align-items-center justify-content-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="logo-container">
+        <span class="logo-title">Pleach Shop</span>
+      </a>
+
+      <!-- Search Container -->
+      <div class="search-container mx-4 flex-grow-1 max-width-600">
+        <div class="search-input-group">
+          <input type="text" class="search-input" placeholder="Search for products, brands and more..." autocomplete="off">
+          <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="search-suggestions"></div>
+      </div>
+
+      <!-- Actions Area -->
+      <div class="d-flex align-items-center gap-4">
+        <div id="header-auth-container">
+          <a href="login.html" class="btn-login-header">Login</a>
+        </div>
+
+        <a href="wishlist.html" class="header-action-link">
+          <i class="fas fa-heart me-1"></i>
+          <span>Wishlist</span>
+          <span class="badge-count wishlist-badge">0</span>
+        </a>
+
+        <a href="cart.html" class="header-action-link">
+          <i class="fas fa-shopping-cart me-1"></i>
+          <span>Cart</span>
+          <span class="badge-count cart-badge">0</span>
+        </a>
+
+
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container my-4">
+    
+    <!-- Empty Cart State -->
+    <div class="row d-none" id="empty-cart-view">
+      <div class="col-12">
+        <div class="card p-5 text-center border-0 shadow-sm">
+          <div class="py-4">
+            <i class="fas fa-shopping-cart text-muted mb-4" style="font-size: 80px;"></i>
+            <h2 class="fw-bold mb-2">Your Cart is Empty!</h2>
+            <p class="text-muted mb-4" id="empty-cart-login-hint">Add items to it now, or log in to see items you saved previously.</p>
+            <div class="d-flex justify-content-center gap-3">
+              <a href="login.html?returnUrl=cart.html" class="btn btn-primary px-4 fw-semibold" id="cart-login-btn" style="background-color: var(--primary-blue); border: none;">Login</a>
+              <a href="products.html" class="btn btn-warning px-4 fw-semibold text-white" style="background-color: var(--flipkart-orange); border: none;">Shop Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Cart State -->
+    <div class="row g-4" id="active-cart-view">
+      
+      <!-- Cart Items List Column -->
+      <div class="col-lg-8">
+        <div class="cart-items-card">
+          <!-- Cart Header Details -->
+          <div class="p-3 border-bottom d-flex justify-content-between align-items-center">
+            <h5 class="mb-0 fw-bold">Pleach Shop Cart (<span id="cart-items-count-heading">0 Items</span>)</h5>
+            <span class="text-muted" style="font-size: 13px;"><i class="fas fa-truck text-success me-1"></i> Free delivery on orders above ₹500</span>
+          </div>
+
+          <!-- Items rows container -->
+          <div id="cart-rows-container">
+            <!-- Dynamic item row templates -->
+          </div>
+
+          <!-- Action bar -->
+          <div class="cart-footer-btn-container">
+            <button class="btn btn-lg fw-bold text-white px-5" id="place-order-btn" style="background-color: var(--flipkart-orange); font-size: 16px; border-radius: 2px;">
+              PLACE ORDER
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Price Breakup Details Column -->
+      <div class="col-lg-4">
+        <div class="price-details-card">
+          <h6 class="price-details-title">Price Details</h6>
+          
+          <div class="price-row">
+            <span id="price-summary-label">Price (0 items)</span>
+            <span id="price-total-mrp">₹0</span>
+          </div>
+          
+          <div class="price-row">
+            <span>Discount</span>
+            <span class="text-success" id="price-total-discount">- ₹0</span>
+          </div>
+          
+          <div class="price-row">
+            <span>Delivery Charges</span>
+            <span id="price-delivery-charge">₹0</span>
+          </div>
+          
+          <div class="price-row total-amount-row">
+            <span>Total Amount</span>
+            <span id="price-net-total">₹0</span>
+          </div>
+
+          <div class="savings-info-box">
+            You will save <span id="price-savings-amount">₹0</span> on this order!
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="pleach-footer">
+    <div class="container text-center text-secondary">
+      <p class="mb-0">&copy; 2026 Pleach Shop. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/products-data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

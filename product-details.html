@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | Pleach Shop</title>
+  <!-- SEO meta -->
+  <meta name="description" content="View product pricing, discounts, specifications, user reviews and FAQs. Get free express delivery on Pleach Shop.">
+  
+  <!-- CSS CDNs -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER SECTION
+       ========================================== -->
+  <header class="pleach-header">
+    <div class="container d-flex align-items-center justify-content-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="logo-container">
+        <span class="logo-title">Pleach Shop</span>
+      </a>
+
+      <!-- Search Container -->
+      <div class="search-container mx-4 flex-grow-1 max-width-600">
+        <div class="search-input-group">
+          <input type="text" class="search-input" placeholder="Search for products, brands and more..." autocomplete="off">
+          <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="search-suggestions"></div>
+      </div>
+
+      <!-- Actions Area -->
+      <div class="d-flex align-items-center gap-4">
+        <div id="header-auth-container">
+          <a href="login.html" class="btn-login-header">Login</a>
+        </div>
+
+        <a href="wishlist.html" class="header-action-link">
+          <i class="fas fa-heart me-1"></i>
+          <span>Wishlist</span>
+          <span class="badge-count wishlist-badge">0</span>
+        </a>
+
+        <a href="cart.html" class="header-action-link">
+          <i class="fas fa-shopping-cart me-1"></i>
+          <span>Cart</span>
+          <span class="badge-count cart-badge">0</span>
+        </a>
+
+
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container my-4">
+    <!-- Breadcrumbs -->
+    <nav aria-label="breadcrumb" class="mb-3">
+      <ol class="breadcrumb" style="font-size: 13px;">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item" id="breadcrumb-category"><a href="#">Category</a></li>
+        <li class="breadcrumb-item active" aria-current="page" id="breadcrumb-product-name">Product Name</li>
+      </ol>
+    </nav>
+
+    <!-- Product Main Body -->
+    <div class="row g-4" id="details-loading-pane">
+      <div class="col-12 text-center py-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4 d-none" id="details-main-pane">
+      
+      <!-- ==========================================
+           LEFT COLUMN: PRODUCT IMAGE GALLERY & ACTION BUTTONS
+           ========================================== -->
+      <div class="col-lg-5">
+        <div class="detail-gallery-sticky">
+          
+          <!-- Large image preview box -->
+          <div class="main-preview-container" id="main-preview-box">
+            <button class="wishlist-toggle" id="details-wishlist-toggle">
+              <i class="fas fa-heart"></i>
+            </button>
+            <img src="" alt="" class="main-preview-img" id="details-main-img">
+            <div class="zoom-lens" id="details-zoom-lens"></div>
+          </div>
+
+          <!-- Absolute Zoom result container -->
+          <div class="zoom-result-window" id="details-zoom-window"></div>
+
+          <!-- Thumbnail slider -->
+          <div class="thumbnail-row" id="details-thumbnails">
+            <!-- Populated dynamically -->
+          </div>
+
+          <!-- Purchase buttons -->
+          <div class="detail-action-buttons">
+            <button class="btn-flipkart btn-add-cart" id="details-add-to-cart-btn">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </button>
+            <button class="btn-flipkart btn-buy-now" id="details-buy-now-btn">
+              <i class="fas fa-bolt"></i> Buy Now
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==========================================
+           RIGHT COLUMN: PRODUCT DETAILS & SPECS
+           ========================================== -->
+      <div class="col-lg-7">
+        <div class="details-content-card">
+          <span class="details-brand" id="details-brand">Brand Name</span>
+          <h1 class="details-name" id="details-title">Product Name Title</h1>
+          
+          <!-- Rating Summary -->
+          <div class="rating-reviews-summary">
+            <span class="rating-badge me-2" id="details-rating">0.0 <i class="fas fa-star"></i></span>
+            <span class="reviews-count-text" id="details-reviews-count">0 Ratings & 0 Reviews</span>
+          </div>
+
+          <!-- Prices -->
+          <div class="d-flex align-items-baseline gap-3 mb-3">
+            <span class="fs-2 fw-bold" id="details-price">₹0</span>
+            <span class="text-secondary text-decoration-line-through fs-5" id="details-original-price">₹0</span>
+            <span class="text-success fw-bold fs-5" id="details-discount">0% off</span>
+          </div>
+
+          <!-- Available Offers -->
+          <div class="offers-section">
+            <h5 class="offers-title">Available Offers</h5>
+            <div class="offer-list-item">
+              <i class="fas fa-tag"></i>
+              <span><strong>Bank Offer</strong> 10% instant discount on Pleach Axis Bank Credit Cards, up to ₹1,500.</span>
+            </div>
+            <div class="offer-list-item">
+              <i class="fas fa-tag"></i>
+              <span><strong>Bank Offer</strong> 5% Unlimited Cashback on Pleach Flipkart Pay Credit Card.</span>
+            </div>
+            <div class="offer-list-item">
+              <i class="fas fa-tag"></i>
+              <span><strong>Partner Offer</strong> Sign up for Pleach Pay Later and get free gift voucher worth ₹100.</span>
+            </div>
+          </div>
+
+          <!-- Delivery Checker -->
+          <div class="pincode-checker-container">
+            <label class="fw-semibold mb-2" style="font-size: 14px;">Delivery</label>
+            <div class="pincode-input-group">
+              <input type="text" class="pincode-input" placeholder="Enter Delivery Pincode" maxlength="6" id="pincode-field">
+              <button class="pincode-btn" id="pincode-check-btn">Check</button>
+            </div>
+            <div class="pincode-feedback" id="pincode-feedback-msg"></div>
+          </div>
+
+          <!-- Dynamic Tabs -->
+          <div class="tabs-navigation-row mt-4">
+            <button class="detail-tab-btn active" data-target="#tab-description">Description</button>
+            <button class="detail-tab-btn" data-target="#tab-specifications">Specifications</button>
+            <button class="detail-tab-btn" data-target="#tab-reviews">Reviews</button>
+            <button class="detail-tab-btn" data-target="#tab-faqs">FAQs</button>
+          </div>
+
+          <!-- Tab Pane: Description -->
+          <div class="detail-tab-pane active" id="tab-description">
+            <p id="details-description-text" class="text-muted" style="line-height: 1.6; font-size: 14.5px;">
+              Description contents.
+            </p>
+          </div>
+
+          <!-- Tab Pane: Specifications -->
+          <div class="detail-tab-pane" id="tab-specifications">
+            <table class="spec-table" id="details-specs-table">
+              <!-- Rendered dynamically -->
+            </table>
+          </div>
+
+          <!-- Tab Pane: Reviews -->
+          <div class="detail-tab-pane" id="tab-reviews">
+            <div class="reviews-breakdown-row">
+              <div class="text-center">
+                <div class="review-score-large text-success" id="details-review-score">4.4</div>
+                <div class="text-muted" style="font-size: 12px; margin-top: 5px;">out of 5 stars</div>
+              </div>
+              <div class="rating-bars-container">
+                <div class="rating-bar-row">
+                  <span>5★</span>
+                  <div class="rating-bar-progress"><div class="rating-bar-fill" style="width: 70%;"></div></div>
+                  <span class="text-muted">70%</span>
+                </div>
+                <div class="rating-bar-row">
+                  <span>4★</span>
+                  <div class="rating-bar-progress"><div class="rating-bar-fill" style="width: 18%;"></div></div>
+                  <span class="text-muted">18%</span>
+                </div>
+                <div class="rating-bar-row">
+                  <span>3★</span>
+                  <div class="rating-bar-progress"><div class="rating-bar-fill" style="width: 7%;"></div></div>
+                  <span class="text-muted">7%</span>
+                </div>
+                <div class="rating-bar-row">
+                  <span>2★</span>
+                  <div class="rating-bar-progress"><div class="rating-bar-fill" style="width: 3%;"></div></div>
+                  <span class="text-muted">3%</span>
+                </div>
+                <div class="rating-bar-row">
+                  <span>1★</span>
+                  <div class="rating-bar-progress"><div class="rating-bar-fill" style="width: 2%;"></div></div>
+                  <span class="text-muted">2%</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review Items List -->
+            <div id="details-reviews-list">
+              <!-- Rendered dynamically -->
+            </div>
+
+            <!-- Submit Review Form -->
+            <div class="card p-3 mt-4 border border-light bg-light">
+              <h6 class="fw-bold mb-3">Write a Customer Review</h6>
+              <form id="add-review-form">
+                <div class="mb-3">
+                  <label class="form-label" style="font-size: 13px;">Your Rating</label>
+                  <select class="form-select form-select-sm" id="new-review-rating" required>
+                    <option value="5">5 Stars (Excellent)</option>
+                    <option value="4">4 Stars (Good)</option>
+                    <option value="3">3 Stars (Average)</option>
+                    <option value="2">2 Stars (Poor)</option>
+                    <option value="1">1 Star (Very Bad)</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" style="font-size: 13px;">Review Title</label>
+                  <input type="text" class="form-control form-control-sm" id="new-review-title" placeholder="Summary of your experience" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" style="font-size: 13px;">Detailed Comments</label>
+                  <textarea class="form-control form-control-sm" id="new-review-comment" rows="3" placeholder="What did you like or dislike?" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-sm btn-primary" style="background-color: var(--primary-blue); border: none;">Submit Review</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Tab Pane: FAQs -->
+          <div class="detail-tab-pane" id="tab-faqs">
+            <div class="accordion accordion-flush" id="details-faq-accordion">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Related Products -->
+    <section class="section-card-container mt-4" id="related-products-section">
+      <div class="section-header">
+        <h2 class="section-title">Related Products</h2>
+      </div>
+      <div class="scroll-section-wrapper">
+        <button class="scroll-arrow scroll-arrow-left"><i class="fas fa-chevron-left"></i></button>
+        <div class="horizontal-scroll-row" id="related-products-row">
+          <!-- Rendered dynamically -->
+        </div>
+        <button class="scroll-arrow scroll-arrow-right"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="pleach-footer">
+    <div class="container text-center text-secondary">
+      <p class="mb-0">&copy; 2026 Pleach Shop. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/products-data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/product-details.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Success | Pleach Shop</title>
+  
+  <!-- CSS CDNs -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  
+  <style>
+    .success-icon-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: rgba(56, 142, 60, 0.1);
+      color: var(--success-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      margin: 0 auto 24px auto;
+      animation: scaleUp 0.4s ease;
+    }
+    @keyframes scaleUp {
+      0% { transform: scale(0); }
+      80% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER SECTION
+       ========================================== -->
+  <header class="pleach-header">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo-container">
+        <span class="logo-title">Pleach Shop</span>
+      </a>
+      <div class="d-flex align-items-center gap-4">
+        <div id="header-auth-container">
+          <a href="login.html" class="btn-login-header">Login</a>
+        </div>
+        <a href="wishlist.html" class="header-action-link">
+          <i class="fas fa-heart me-1"></i><span>Wishlist</span><span class="badge-count wishlist-badge">0</span>
+        </a>
+        <a href="cart.html" class="header-action-link">
+          <i class="fas fa-shopping-cart me-1"></i><span>Cart</span><span class="badge-count cart-badge">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container my-5" style="max-width: 750px;">
+    
+    <div class="card p-5 border-0 shadow-sm text-center mb-4">
+      <div class="success-icon-circle">
+        <i class="fas fa-check"></i>
+      </div>
+      
+      <h2 class="fw-bold mb-2">Order Confirmed!</h2>
+      <p class="text-muted mb-4">Thank you for shopping with Pleach Shop. Your order has been registered successfully.</p>
+      
+      <div class="bg-light p-3 rounded mb-4 d-inline-block px-4">
+        <span class="text-muted d-block small mb-1">YOUR ORDER ID</span>
+        <h5 class="fw-bold text-primary mb-0" id="success-order-id">OD00000000</h5>
+      </div>
+
+      <div class="row g-3 text-start border-top pt-4 mt-2 justify-content-center" id="success-details-box">
+        <!-- Loaded dynamically -->
+      </div>
+
+      <div class="d-flex justify-content-center gap-3 mt-4 border-top pt-4">
+        <a href="index.html" class="btn btn-primary px-4 fw-semibold" style="background-color: var(--primary-blue); border: none;">
+          Continue Shopping
+        </a>
+        <a href="account.html?tab=orders" class="btn btn-outline-secondary px-4 fw-semibold">
+          View My Orders
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-secondary py-3" style="font-size: 12px; background-color: var(--white); border-top: 1px solid var(--border-color);">
+    <p class="mb-0">&copy; 2026 Pleach Shop. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/products-data.js"></script>
+  <script src="js/app.js"></script>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const orderId = params.get("orderId");
+
+      if (!orderId) {
+        document.getElementById("success-order-id").textContent = "N/A";
+        document.getElementById("success-details-box").innerHTML = `
+          <div class="col-12 text-center text-muted">
+            Could not retrieve details for this order. Go to <a href="account.html?tab=orders">My Orders</a> to track progress.
+          </div>
+        `;
+        return;
+      }
+
+      document.getElementById("success-order-id").textContent = orderId;
+
+      // Lookup order details
+      const user = getLoggedInUser();
+      if (!user) return;
+
+      const ordersKey = `pleach_orders_${user.email}`;
+      const orders = JSON.parse(localStorage.getItem(ordersKey)) || [];
+      const order = orders.find(o => o.orderId === orderId);
+
+      if (order) {
+        const addr = order.shippingAddress;
+        document.getElementById("success-details-box").innerHTML = `
+          <div class="col-md-6 border-end">
+            <h6 class="fw-bold mb-3 text-secondary" style="font-size: 13px; text-transform: uppercase;">Delivery Address</h6>
+            <div class="fw-bold mb-1">${addr.name}</div>
+            <div class="small text-muted mb-2">Phone: ${addr.phone}</div>
+            <p class="small mb-0 text-muted" style="line-height: 1.4;">
+              ${addr.address}, ${addr.locality},<br>
+              ${addr.city}, ${addr.state} - <strong>${addr.pincode}</strong>
+            </p>
+          </div>
+          <div class="col-md-6 ps-md-4">
+            <h6 class="fw-bold mb-3 text-secondary" style="font-size: 13px; text-transform: uppercase;">Summary</h6>
+            <table class="table table-sm table-borderless small mb-0 text-muted">
+              <tbody>
+                <tr>
+                  <td>Subtotal</td>
+                  <td class="text-end">₹${order.subtotal.toLocaleString()}</td>
+                </tr>
+                <tr>
+                  <td>Delivery Charges</td>
+                  <td class="text-end">${order.delivery === 0 ? '<span class="text-success fw-bold">FREE</span>' : `₹${order.delivery}`}</td>
+                </tr>
+                <tr class="border-top pt-2">
+                  <td class="fw-bold text-dark">Total Amount</td>
+                  <td class="text-end fw-bold text-dark">₹${order.total.toLocaleString()}</td>
+                </tr>
+                <tr>
+                  <td>Payment Mode</td>
+                  <td class="text-end fw-semibold text-success">Cash on Delivery</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        `;
+      } else {
+        document.getElementById("success-details-box").innerHTML = `
+          <div class="col-12 text-center text-muted">
+            Could not retrieve details for order ID: "${orderId}". Use the My Orders menu to track deliveries.
+          </div>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>
